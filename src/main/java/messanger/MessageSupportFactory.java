@@ -1,0 +1,34 @@
+package messanger;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class MessageSupportFactory {
+
+    private static MessageSupportFactory instance;
+
+    private Properties props;
+    private MessageRenderer renderer;
+    private MessageProvider provider;
+
+    private MessageSupportFactory() {
+        props = new Properties();
+        try {
+            props.load(new FileInputStream("messanger/msf.properties"));
+            String renderClass = props.getProperty("render.class");
+            String providerClass = props.getProperty("provider.class");
+
+            renderer = (MessageRenderer) Class.forName(renderClass).newInstance();
+            provider = (MessageProvider) Class.forName(providerClass).newInstance();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    static {
+        instance = new MessageSupportFactory();
+    }
+
+
+}
