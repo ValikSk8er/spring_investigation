@@ -1,4 +1,4 @@
-package quoters;
+package com.valiksk8.quoters;
 
 import javax.annotation.PostConstruct;
 

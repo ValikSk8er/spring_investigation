@@ -7,15 +7,23 @@
 
     <!--<context:annotation-config/>-->
     <!--<context:component-scan base-package="quoters"/>-->
-    <!--<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
-    <!--<context:component-scan base-package="org.springframework.context.annotation"/>-->
-    <bean class="quoters.InjectRandomIntAnnotationBeanPostProcessor"/>
+    <!--<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+    <!-<context:component-scan base-package="org.springframework.context.annotation"/>-->
+    <bean class="com.valiksk8.quoters.InjectRandomIntAnnotationBeanPostProcessor"/>
     <!--id дають якшо хочуть цей бін кудись інджектнути-->
-    <bean class="quoters.TerminatorQuoter" id="terminatorQuoter">
+    <bean class="com.valiksk8.quoters.TerminatorQuoter" id="terminatorQuoter">
         <!--зашиваэ в сетер біна, в поле месседж це значення-->
         <property name="message" value="I'll be back"/>
     </bean>
 
+    <bean
+        id="provider"
+        class="com.valiksk8.messanger.HelloWorldMessageProvider"/>
+    <bean
+        id="renderer"
+        class="com.valiksk8.messanger.StandardOutMessageRenderer">
+            <property name="messageProvider" ref="provider"/>
+    </bean>
 
 
 </beans>

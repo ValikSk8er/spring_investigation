@@ -1,4 +1,4 @@
-package messanger;
+package com.valiksk8.messanger;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -14,8 +14,8 @@ public class MessageSupportFactory {
     private MessageSupportFactory() {
         props = new Properties();
         try {
-            props.load(new FileInputStream("messanger/msf.properties"));
-            String renderClass = props.getProperty("render.class");
+            props.load(new FileInputStream("src\\main\\java\\com\\valiksk8\\messanger\\msf.properties"));
+            String renderClass = props.getProperty("renderer.class");
             String providerClass = props.getProperty("provider.class");
 
             renderer = (MessageRenderer) Class.forName(renderClass).newInstance();
@@ -30,5 +30,15 @@ public class MessageSupportFactory {
         instance = new MessageSupportFactory();
     }
 
+    public static MessageSupportFactory getInstance() {
+        return instance;
+    }
 
+    public MessageRenderer getMessageRenderer() {
+        return renderer;
+    }
+
+    public MessageProvider getMessageProvider() {
+        return provider;
+    }
 }

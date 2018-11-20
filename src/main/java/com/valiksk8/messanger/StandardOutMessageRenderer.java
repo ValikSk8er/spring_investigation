@@ -1,8 +1,17 @@
-package messanger;
+package com.valiksk8.messanger;
 
 public class StandardOutMessageRenderer implements MessageRenderer {
-
     private MessageProvider messageProvider;
+
+    @Override
+    public MessageProvider getMessageProvider() {
+        return messageProvider;
+    }
+
+    @Override
+    public void setMessageProvider(MessageProvider messageProvider) {
+        this.messageProvider = messageProvider;
+    }
 
     @Override
     public void render() {
@@ -12,15 +21,5 @@ public class StandardOutMessageRenderer implements MessageRenderer {
                     + StandardOutMessageRenderer.class.getName());
         }
         System.out.println(messageProvider.getMessage());
-    }
-
-    @Override
-    public void setMessageProvider(MessageProvider provider) {
-        this.messageProvider = provider;
-    }
-
-    @Override
-    public MessageProvider getMessageProvider() {
-        return messageProvider;
     }
 }

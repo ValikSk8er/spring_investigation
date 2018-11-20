@@ -1,4 +1,4 @@
-package quoters;
+package com.valiksk8.quoters;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,4 +1,4 @@
-package messanger;
+package com.valiksk8.messanger;
 
 public class HelloWorldMessageProvider implements MessageProvider {
     @Override
